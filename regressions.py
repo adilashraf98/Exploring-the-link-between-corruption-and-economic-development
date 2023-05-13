@@ -292,7 +292,7 @@ def plot_regression_results(model, coef_plot_filename, residual_plot_filename):
 
 plot_regression_results(robust_results_7,"coefplot_reg7.png","resplot_reg7.png")
 
-plot_regression_results(robust_results_8,"coefplot_reg8.png","resplot_rep8.png")
+plot_regression_results(robust_results_8,"coefplot_reg8.png","resplot_reg8.png")
 
 
 
