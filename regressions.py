@@ -14,7 +14,7 @@ from tabulate import tabulate
 # Read CSV file into a DataFrame
 df = pd.read_csv("WBES.csv")
 
-# Creating our dependent variable 
+# Creating our first dependent variable 
 
 # Apply logarithmic transformation to the sales columns
 
@@ -146,20 +146,20 @@ X = pd.concat([df[independent_variables], encoded_countries], axis=1)
 X = sm.add_constant(X)
 
 # Perform robust regression using statsmodels
-robust_model = sm.RLM(ysalesgrowth, X, M=sm.robust.norms.HuberT())
-robust_results = robust_model.fit()
+robust_model_1 = sm.RLM(ysalesgrowth, X, M=sm.robust.norms.HuberT())
+robust_results_1 = robust_model_1.fit()
 
 # Print the regression results
-print(robust_results.summary())
+print(robust_results_1.summary())
 
-save_regression_summary_image(robust_results, 'regression_summary_reg1_robust_yislnsalesgrowth.png')
+save_regression_summary_image(robust_results_1, 'regression_summary_reg1_robust_yislnsalesgrowth.png')
 
 #repeating the same for our second dependent variable
 #using the same variable names to not overburden python's limited ram on this PC
-robust_model = sm.RLM(ypercentsales, X, M=sm.robust.norms.HuberT())
-robust_results = robust_model.fit()
-print(robust_results.summary())
-save_regression_summary_image(robust_results, 'regression_summary_reg2_robust_yispercentsalesgrowth.png')
+robust_model_2 = sm.RLM(ypercentsales, X, M=sm.robust.norms.HuberT())
+robust_results_2 = robust_model_2.fit()
+print(robust_results_2.summary())
+save_regression_summary_image(robust_results_2, 'regression_summary_reg2_robust_yispercentsalesgrowth.png')
 
 
 # Regression number 3
@@ -167,17 +167,17 @@ save_regression_summary_image(robust_results, 'regression_summary_reg2_robust_yi
 # we use the same dependent and independent variables as our last regression
 # but we try fitting it to a non-robust OLS regression
 # Perform fixed effects regression using statsmodels
-model = sm.OLS(ysalesgrowth, sm.add_constant(df[independent_variables]))
-model = model.fit(cov_type='cluster', cov_kwds={'groups': df['country']})
+model_3 = sm.OLS(ysalesgrowth, sm.add_constant(df[independent_variables]))
+model_3 = model_3.fit(cov_type='cluster', cov_kwds={'groups': df['country']})
 
 # Print the regression results
-print(model.summary())
-save_regression_summary_image(model, 'regression_summary_reg3_FE_OLS_yislnsalesgrowth.png')
+print(model_3.summary())
+save_regression_summary_image(model_3, 'regression_summary_reg3_FE_OLS_yislnsalesgrowth.png')
 
-model = sm.OLS(ypercentsales, sm.add_constant(df[independent_variables]))
-model = model.fit(cov_type='cluster', cov_kwds={'groups': df['country']})
-print(model.summary())
-save_regression_summary_image(model, 'regression_summary_reg4_FE_OLS_yispercentsalesgrowth.png')
+model_4 = sm.OLS(ypercentsales, sm.add_constant(df[independent_variables]))
+model_4 = model_4.fit(cov_type='cluster', cov_kwds={'groups': df['country']})
+print(model_4.summary())
+save_regression_summary_image(model_4, 'regression_summary_reg4_FE_OLS_yispercentsalesgrowth.png')
 
 # the OLS model does not work well
 # almost all of our coefficients are insignificant 
@@ -191,21 +191,21 @@ fixed_effects = pd.get_dummies(df['country'], prefix='country', drop_first=True)
 X_with_fixed_effects = pd.concat([X, fixed_effects], axis=1)
 
 # Perform fixed effects and robust regression using statsmodels
-robust_model = sm.RLM(ysalesgrowth, X_with_fixed_effects, M=sm.robust.norms.HuberT())
-robust_results = robust_model.fit()
+robust_model_5 = sm.RLM(ysalesgrowth, X_with_fixed_effects, M=sm.robust.norms.HuberT())
+robust_results_5 = robust_model_5.fit()
 
 # Print the regression results
-print(robust_results.summary())
+print(robust_results_5.summary())
 
-save_regression_summary_image(robust_results, 'regression_summary_reg5_FE_robust_yislnsalesgrowth.png')
+save_regression_summary_image(robust_results_5, 'regression_summary_reg5_FE_robust_yislnsalesgrowth.png')
 
-robust_model = sm.RLM(ypercentsales, X_with_fixed_effects, M=sm.robust.norms.HuberT())
-robust_results = robust_model.fit()
+robust_model_6 = sm.RLM(ypercentsales, X_with_fixed_effects, M=sm.robust.norms.HuberT())
+robust_results_6 = robust_model_6.fit()
 
 # Print the regression results
-print(robust_results.summary())
+print(robust_results_6.summary())
 
-save_regression_summary_image(robust_results, 'regression_summary_reg6_FE_robust_yispercentsalesgrowth.png')
+save_regression_summary_image(robust_results_6, 'regression_summary_reg6_FE_robust_yispercentsalesgrowth.png')
 
 
 
@@ -238,19 +238,64 @@ X = sm.add_constant(X)
 X_with_fixed_effects = pd.concat([X, fixed_effects], axis=1)
 
 # Concatenate the fixed effects with the independent variables
-robust_model = sm.RLM(ysalesgrowth, X_with_fixed_effects, M=sm.robust.norms.HuberT())
-robust_results = robust_model.fit()
+robust_model_7 = sm.RLM(ysalesgrowth, X_with_fixed_effects, M=sm.robust.norms.HuberT())
+robust_results_7 = robust_model_7.fit()
 
 # Print the regression results
-print(robust_results.summary())
-save_regression_summary_image(robust_results, 'regression_summary_reg7_FE_robust_adjindvar_yislnsalesgrowth.png')
+print(robust_results_7.summary())
+save_regression_summary_image(robust_results_7, 'regression_summary_reg7_FE_robust_adjindvar_yislnsalesgrowth.png')
 
-robust_model = sm.RLM(ypercentsales, X_with_fixed_effects, M=sm.robust.norms.HuberT())
-robust_results = robust_model.fit()
+robust_model_8 = sm.RLM(ypercentsales, X_with_fixed_effects, M=sm.robust.norms.HuberT())
+robust_results_8 = robust_model_8.fit()
 
 # Print the regression results
-print(robust_results.summary())
-save_regression_summary_image(robust_results, 'regression_summary_reg8_FE_robust_adjindvar_yispercentsalesgrowth.png')
+print(robust_results_8.summary())
+save_regression_summary_image(robust_results_8, 'regression_summary_reg8_FE_robust_adjindvar_yispercentsalesgrowth.png')
+
+
+#visualizing our final model's residuals and coefficients
+def plot_regression_results(model, coef_plot_filename, residual_plot_filename):
+
+    # Exclude country variables from coefficient plot
+    excluded_variables = ["country_Albania", "country_Armenia", "country_Azerbaijan", "country_Belarus","country_Bih","country_Bulgaria","country_Croatia",	"country_Czech",	"country_Estonia",	"country_Georgia",	"country_Hungary",	"country_Kazakhstan",	"country_Kosovo",	"country_Kyrgyzstan",	"country_Latvia",	"country_Lithuania",	"country_Macedonia",	"country_Moldova",	"country_Mongolia",	"country_Montenegro",	"country_Poland",	"country_Romania",	"country_Russia",	"country_Serbia",	"country_Slovakia",	"country_Slovenia",	"country_Tajikistan",	"country_Turkey",	"country_Ukraine",	"country_Uzbekistan"] 
+
+    # Coefficient Plot
+    fig, ax = plt.subplots(figsize=(8, 6))
+    coefficients = model.params.drop('const')
+    coefficients = coefficients.drop(excluded_variables)
+    coef_ci = model.conf_int().drop('const')
+    coef_ci = coef_ci.drop(excluded_variables)
+    coef_df = pd.DataFrame({'Coefficient': coefficients, 'CI_lower': coef_ci.iloc[:, 0], 'CI_upper': coef_ci.iloc[:, 1]})
+    coef_df.plot(kind='bar', y=['Coefficient'], yerr=coef_df[['Coefficient', 'CI_lower', 'CI_upper']].values.T, ax=ax)
+    ax.set_xlabel('Independent Variables')
+    ax.set_ylabel('Coefficient')
+    ax.set_title('Coefficient Plot with Confidence Intervals')
+    plt.xticks(rotation=45, ha='right', fontsize=8)  # Set rotation angle, alignment, and font size of x-axis labels
+    plt.tight_layout()
+    plt.savefig(coef_plot_filename, dpi=300)  # Set the DPI to 300 for higher resolution
+    plt.close()
+
+    # Residual Plot
+    fig, ax = plt.subplots(figsize=(8, 6))
+    standardized_residuals = model.resid / np.sqrt(np.mean(model.resid**2))
+    ax.scatter(model.fittedvalues, standardized_residuals)
+    ax.axhline(0, color='r', linestyle='--')
+    ax.set_xlabel('Fitted Values')
+    ax.set_ylabel('Standardized Residuals')
+    ax.set_title('Residual Plot')
+    plt.tight_layout()
+    plt.savefig(residual_plot_filename, dpi=300)  # Set the DPI to 300 for higher resolution
+    plt.close()
+
+
+# making our actual plots for both our final model specifications
+
+plot_regression_results(robust_results_7,"coefplot_reg7.png","resplot_reg7.png")
+
+plot_regression_results(robust_results_8,"coefplot_reg8.png","resplot_rep8.png")
+
+
+
 
 
 

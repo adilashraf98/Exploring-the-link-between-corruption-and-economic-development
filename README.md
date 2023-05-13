@@ -170,7 +170,60 @@ Model 8: Dependent Var = Annual %age change sales
 
 ## Conclusion
 
-The script performs various econometric analyses on the dataset, exploring the relationship between dependent variables ('Sales Growth' and 'Annual %age change sales') and independent variables. Different regression models are employed, including robust regression and fixed effects regression, to account for potential outliers and country-specific effects. The results are summarized and visualized through regression summary images.
+We also produce 2 sets of coefficient and residual plots so summarize models 7 and 8 above. 
 
-For more detailed information, refer to the script itself and the generated regression summary images.
-Feel free to adjust and custom
+### Sales Growth
+For Sales Growth as our dependent variable. 
+Our coefficient plot is here: ![Model7_coeff](coefplot_reg7.png)
+Our residual plot is here: ![Model8_coeff](resplot_reg7.png)
+
+### Annual %age change in sales
+For Annual %age change sales as our dependent variable
+Our coefficient plot is here: ![Model8_coeff](coefplot_reg8.png)
+Our residual plot is here: ![Model8_coeff](resplot_reg8.png)
+
+### Discussion of Results
+
+Taking our final model specifications, we find that different variables have different effects
+on whether they "grease" or "sand" the wheels of growth. 
+
+There is also a disparity between the results that I produce in these files and the regression results posted by the authors of the original study. 
+This can be due to a number of reasons. The original authors had a wider dataset which covered a lot more geographic areas. They also incorporated the use of some
+instrument variables which I could not include in my own models. 
+
+I believe the residual plots can provide insights into what model would be preferred to make comments on. 
+While model 8 has a residual plot where the points seem to be very close to 0, this seems a bit too "good" of a fit. 
+Furthermore, there is one outlier that is very far away. 
+
+The residual plot on the model 7 seems to be largely random.
+Thus, we make comments on variables in this model. 
+
+It seems that bribes to gain access to construction permits and electricity have a positive coefficient. 
+This seems to suggest that giving bribes in these two areas leads to some economic gains which improves sales. 
+Perhaps this is why there is a positive coefficient on the obst corruption variable too which suggests an environment which 
+advantages such behavior. 
+
+On the other hand, we seem to see that the obst customs variable has a negative coefficient. 
+It is possible that customs in particular having obstructions is much more to the detriment of firm sales since it is harder to sidestep. 
+
+We see negative and positive coefficient on low edu labor and ISO as expected. Low education leads to low sales and innovation leads to high sales. 
+
+I would refrain from commenting on the exact coefficient magnitudes in this model since I am trying to be tentative with my model especially since I did not incorproate some of the instrument variables that the original authors did. 
+Even so, the 1.4% and 1.5% improvement that giving bribes for construction permits and to get electricity connections seem small enough to be reasonable. 
+
+It would be difficult to argue that corruption accounts for most of the variation in firm sales. This is why having more control variables in the future might be logical. 
+
+Overall though, there seems to be a conflicting effect on different obstructions and corruption variables in the model. 
+Thus, perhaps it depends on the specific act when deciding how it "greases" or "sands" growth. 
+
+### Next steps
+Taking this study further, perhaps we can experiment with more corruption specifications and model types such as a time series model or a machine learning model like the support vector regression model. 
+
+
+
+
+
+
+
+
+

@@ -31,9 +31,8 @@ with zipfile.ZipFile(zip_path, 'r') as zip_file:
 dta_path = dta_filename  # Assumes the .dta file is in the current working directory
 df, meta = pyreadstat.read_dta(dta_path, encoding='latin1')
 
-#importing our GDP file
 
-#Import the CSV file
+#importing our GDP file
 GDPper = pd.read_csv('ed4e6d79-d906-43c5-8054-80fd437963b2_Data.csv') 
 
 #Select certain columns
@@ -56,6 +55,7 @@ df['year'] = pd.to_numeric(df['year'], errors='coerce')
 GDPper_long['year'] = pd.to_numeric(GDPper_long['year'], errors='coerce')
 
 # MERGING OUR DATA TOGETHER
+#left join to keep our df variables
 merged_data = pd.merge(df, GDPper_long, on=['country', 'year'], how='left')
 
 #selecting what we need
@@ -213,13 +213,8 @@ print("Missing Values Count:")
 print(missing_values_count)
 
 
-#missing values computation 
-#regressions experiments 
-#visualization of results
-#maps of corruption and economic growth in QGIS
 
-
-# First we're going to try and see what our variable types are
+# Then we're going to try and see what our variable types are
 for column in newdata.columns:
     column_type = newdata[column].dtype
     print(f"Column '{column}' has data type: {column_type}")
@@ -247,7 +242,7 @@ columns_to_numerfiy = ["GDPpercap",
                        "Pmts for security"
                        ]
 
-# we convert everything to numeric that we can to make it easier for our regressions later
+# we convert everything to numeric so that we can to make it easier for our regressions later
 for column in columns_to_numerfiy:
     newdata[column] = newdata[column].astype(float)  
 
@@ -269,7 +264,7 @@ ndf_imputed = pd.DataFrame(numeric_data_imputed, columns=numeric_columns)
 # Concatenate the imputed numerical columns with the original categorical columns
 ndf_imputed = pd.concat([newdata[['country']], ndf_imputed], axis=1)
 
-
+# just checking what our dataframe looks like now
 ndf_imputed.head()
 
 # fixing some impossible non integers
