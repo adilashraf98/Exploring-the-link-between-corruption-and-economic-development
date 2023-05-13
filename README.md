@@ -135,6 +135,7 @@ This was my robust regression models (HuberT) fitted with fixed effects. This im
 
 I now kept my previous regression model but removed most of my variables which were very statistically insignificant (> 0.4). 
 
+
 I was left with the following variables: 
 1. 'Bribe constr permit'
 2. 'Bribe electricity' 
@@ -163,8 +164,9 @@ I was left with the following variables:
 
 The output can be seen here: 
 ![Model 7](regression_summary_reg7_FE_robust_adjindvar_yislnsalesgrowth.png)
+Model 7: Dependent Var = Sales Growth 
 ![Model 8](regression_summary_reg8_FE_robust_adjindvar_yispercentsalesgrowth.png)
-
+Model 8: Dependent Var = Annual %age change sales
 
 ## Conclusion
 
