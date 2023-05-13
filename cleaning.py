@@ -31,7 +31,6 @@ with zipfile.ZipFile(zip_path, 'r') as zip_file:
 dta_path = dta_filename  # Assumes the .dta file is in the current working directory
 df, meta = pyreadstat.read_dta(dta_path, encoding='latin1')
 
-
 #importing our GDP file
 
 #Import the CSV file

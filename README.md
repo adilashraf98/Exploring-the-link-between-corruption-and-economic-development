@@ -127,11 +127,11 @@ I thought I would use a fixed effects model to account for a possible OLS model 
 I also thought that if I included fixed effects on my countries, I would be able to account for the variations in the different areas even within central asia and eastern europe. 
 Alas though, my results were not favourable. I could not find any justifications to keep a model with very high p values on most of its coefficients. 
 
-### Model 5 and 6: Fixed Effects and Robust Regression
+#### Model 5 and 6: Fixed Effects and Robust Regression
 
 This was my robust regression models (HuberT) fitted with fixed effects. This improved my model in the sense that it made my coefficients more statistically significant and also made my coefficients more understandable. 
 
-### Model 6 and 8: Adjusted Independent Variables
+#### Model 6 and 8: Adjusted Independent Variables
 
 I now kept my previous regression model but removed most of my variables which were very statistically insignificant (> 0.4). 
 
@@ -160,6 +160,10 @@ I was left with the following variables:
 22. 'Obst crime'
 23. 'Bribe constr permit*Wait constr permit'
 24. 'ln_GDPpercap'
+
+The output can be seen here: 
+![Model 7](regression_summary_reg7_FE_robust_adjindvar_yislnsalesgrowth.png)
+![Model 8](regression_summary_reg8_FE_robust_adjindvar_yispercentsalesgrowth.png)
 
 
 ## Conclusion
