@@ -217,7 +217,7 @@ Overall though, there seems to be a conflicting effect on different obstructions
 Thus, perhaps it depends on the specific act when deciding how it "greases" or "sands" growth. 
 
 ### Next steps
-Taking this study further, perhaps we can experiment with more corruption specifications and model types such as a time series model or a machine learning model like the support vector regression model. 
+Taking this study further, perhaps we can experiment with more corruption specifications and model types such as a time series model or a machine learning model like the support vector regression model. Finding the best fit would work best if we iterate through the different possible models. 
 
 
 
