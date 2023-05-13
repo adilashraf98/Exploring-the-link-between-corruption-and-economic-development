@@ -12,7 +12,7 @@ It also chooses to focus on data from Central Asia and Europe since limiting the
 The years selected for the data simply account for more recent years than what the original study accounts for. Nur-tegin and Jakee have only looked at data until 2012, for example. 
 
 If the user so chooses, they may download the datasets directly from here (after their request has been approved by the World Bank): ['datasets'](https://login.enterprisesurveys.org/content/sites/financeandprivatesector/en/library/library-detail.html/content/dam/wbgassetshare/enterprisesurveys/combineddata/eastern-europe-central-asia/BEEPS_2009_2013_Panel.zip).
-Otherwise, the main dataset can be found in the repository too with the name "BEEPS_2009_2013_Panel.dta". 
+Otherwise, the main dataset can be found in the repository too with the name "BEEPS_2009_2013_Panel.dta". This is inside the "assets" file. 
 
 It should be noticed that the .dta format indicates that the data is designed to be viewed as Stata's native data format. 
 
