@@ -40,7 +40,7 @@ It seeks to combine the two datasets with firm level data and country level GDP 
 Additionally, it performs the necessary pre-processing to the WBES dataset to make it usable for further analysis. 
 
 ### Variables
-While immediately it was thought that a different specification of variables might make more sense, I fell back on choosing the variables that the Nur-tegin and Jakee specifiy. 
+While immediately it was thought that a different specification of variables might make more sense, I fell back on choosing the variables that Nur-tegin and Jakee specifiy. 
 
 These original variables, their new names, and their explanation are as follows: 
 
