@@ -87,7 +87,7 @@ These original variables, their new names, and their explanation are as follows:
 
 ### Missing Values
 The problem of missing values is particularly important. To fix that, we take inspiration from the 
-author's to use multiple imputation. The authors use the Mersenne Twister pseudorandom number generator with a fixed seed value. 
+authors to use multiple imputation. The authors use the Mersenne Twister pseudorandom number generator with a fixed seed value. 
 I instead used the ImperativeImputer technique to conduct my imputations. 
 This is a popular technique according to the literature and uses other variables after an initial guess to estimate what the missing values would be. 
 The technique sounds like a regression and actually uses the LGBMRegressor estimator. I specify my iterations to 10 to drawa balance between having enough iterations to make the estimates accurate and to not crash the python environment since it does have limited computational resources. 
