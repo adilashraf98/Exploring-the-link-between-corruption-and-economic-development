@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed May 10 16:25:23 2023
-
 @author: adila
 """
 import pyreadstat
